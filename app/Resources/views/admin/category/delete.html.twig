@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+    <div class="container body-content span=8 offset=2">
+        <div class="well">
+            <form class="form-horizontal" action="{{ path('admin_categories_delete', {'id': category.id }) }}" method="POST">
+                <fieldset>
+                    <legend>Delete Category</legend>
+
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="category_name">Name</label>
+                        <div class="col-sm-4 ">
+                            <input type="text" class="form-control" id="category_name" placeholder="Category Name"
+                                   name="category[name]" required value="{{ category }}" disabled>
+                        </div>
+                    </div>
+
+                    {{ form_row(form._token) }}
+
+                    <div class="form-group">
+                        <div class="col-sm-4 col-sm-offset-4">
+                            <a class="btn btn-default" href="{{ path('admin_categories') }}">Cancel</a>
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
